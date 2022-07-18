@@ -53,6 +53,7 @@
 
 <!-- GETTING STARTED -->
 ## Getting Started
+## Patient data app
 
 ### Prerequisites
 
@@ -82,6 +83,22 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    python conversation.py
    ```
+
+4. open telegram app and search for IHX_bot and follow the prompts 
+
+## Doctors dashboard
+
+1. cd hackathon
+
+2. Install packages 
+  ```sh
+  pip install requirments.txt
+  ```
+3. Run Dashboard
+  ```sh
+  python app.py
+  ```
+4. navigate to url 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
