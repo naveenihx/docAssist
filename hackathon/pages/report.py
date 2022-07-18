@@ -173,65 +173,13 @@ def layout(report_id=None):
                 
                     dcc.Store(id="selected-rows", storage_type="memory"),
                     dcc.Store(id="flag-memory", storage_type="memory"),
-                    html.H1('Patient Bio'),
-                    dash_table.DataTable(
-                    id='datatable-interactivity_bio',
-                    columns=[
-                        {"name": i, "id": i, "deletable": True, "selectable": True, "renamable": True} for i in df_bio.columns
-                    ],
-                    data=df_bio.to_dict('records'),
-                    editable=True,
-                    filter_action="native",
-                    sort_action="native",
-                    sort_mode="multi",
-                    row_selectable="multi",
-                    row_deletable=False,
-                    selected_columns=[],
-                    selected_rows=[],
-                    page_action="native",
-                    page_current= 0,
-                    page_size= 50,
-                    markdown_options={'link_target':'_self', 'html': True},
-                    style_table={'overflowX': 'scroll','height': '150px'},
-                    style_cell={'textAlign': 'left',
-                                'whiteSpace': 'normal',
-                                'height': 'auto',
-                                'minWidth': '50px', 'width': '60px', 'maxWidth': '180px',},
-                    style_header={
-                    'backgroundColor': 'rgb(230, 230, 230)',
-                    'fontWeight': 'bold'},
-                    ),
-                    html.H1('System Extracted Data'),
+                    html.H3('Patient Bio'),
+                    dbc.Table.from_dataframe(df_bio, striped=True, bordered=True, hover=True),
+                    html.H3('System Extracted Data'),
+                    dbc.Table.from_dataframe(df, striped=True, bordered=True, hover=True),
                     
-                    dash_table.DataTable(
-                    id='datatable-interactivity',
-                    columns=[
-                        {"name": i, "id": i, "deletable": True, "selectable": True, "renamable": True} for i in df.columns
-                    ],
-                    data=df.to_dict('records'),
-                    editable=True,
-                    filter_action="native",
-                    sort_action="native",
-                    sort_mode="multi",
-                    row_selectable="multi",
-                    row_deletable=False,
-                    selected_columns=[],
-                    selected_rows=[],
-                    page_action="native",
-                    page_current= 0,
-                    page_size= 50,
-                    markdown_options={'link_target':'_self', 'html': True},
-                    style_table={'overflowX': 'scroll','height': '700px'},
-                    style_cell={'textAlign': 'left',
-                                'whiteSpace': 'normal',
-                                'height': 'auto',
-                                'minWidth': '50px', 'width': '60px', 'maxWidth': '180px',},
-                    style_header={
-                    'backgroundColor': 'rgb(230, 230, 230)',
-                    'fontWeight': 'bold'},
-                    ),
-                    dbc.Button("show Box",color="primary",id="show_box"),
-                ])
+                ],)
+                
             ],width=6)
     ])
     return screen
@@ -281,33 +229,3 @@ def update_city_selected(n_next,n_previous,markdown):
         
     return fig
 
-
-@callback(
-    Output(component_id="graph-picture", component_property="relayoutData"),
-    [Input(component_id='show_box', component_property='n_clicks')],
-    prevent_initial_call=True
-)
-def draw(n_click):
-    button_id = ctx.triggered_id if not None else 'No clicks yet'
-    if button_id != None and button_id =='show_box':
-        print("box clicked")
-        box = {
-            "xref": "x",
-            "yref": "y",
-            "layer": "above",
-            "opacity": 1,
-            "line": {
-              "color": "#444",
-              "width": 4,
-              "dash": "solid"
-            },
-            "fillcolor": "rgba(10,10,10,0.5)",
-            "fillrule": "evenodd",
-            "type": "rect",
-            "x0": 129.0740650318287,
-            "y0": 78.74189814814814,
-            "x1": 209.81480577256946,
-            "y1": 174.2974537037037
-          }
-        
-    return box
