@@ -192,7 +192,7 @@ def layout(report_id=None):
                     page_current= 0,
                     page_size= 50,
                     markdown_options={'link_target':'_self', 'html': True},
-                    style_table={'overflowX': 'scroll','height': '700px'},
+                    style_table={'overflowX': 'scroll','height': '150px'},
                     style_cell={'textAlign': 'left',
                                 'whiteSpace': 'normal',
                                 'height': 'auto',
