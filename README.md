@@ -98,7 +98,7 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   python app.py
   ```
-4. navigate to url 
+4. navigate to url i.e: <server IP address>:8320/home
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
